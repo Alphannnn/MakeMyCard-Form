@@ -1,4 +1,4 @@
-// PASSWORD TOGGLE
+  // PASSWORD TOGGLE
 function togglePassword() {
   const passwordInput = document.getElementById("password");
   const lockIcon = document.getElementById("lockIcon");
@@ -29,6 +29,9 @@ profilePhoto.addEventListener('change', function () {
     };
     reader.readAsDataURL(file);
   }
+
+  // ✅ Important fix for mobile: reset input to allow same image re-selection
+  this.value = "";
 });
 
 // FORM SUBMISSION
@@ -71,5 +74,5 @@ document.getElementById('form').addEventListener('submit', function (e) {
   alert("Form data saved successfully!");
   e.target.reset();
   previewImage.src = "./b05e65e027bbc1c590ce4e283666b946.jpg"; // reset preview image
-  imgData = ""; // reset image
+  imgData = ""; // reset image data
 });
