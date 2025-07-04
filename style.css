@@ -1,0 +1,280 @@
+*{
+    font-family: 'Poppins' , sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+section{
+ display: flex;
+     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:url(./b05e65e027bbc1c590ce4e283666b946.jpg) no-repeat ;
+    background-size: cover;
+    background-position: center;
+     animation: animateBg  5s linear infinite; 
+}
+
+@keyframes animateBg{
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+.login-box{
+    position: relative;
+    width: 1500px;
+    height: 650px;
+    background: transparent;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255,0.5);
+    backdrop-filter: blur(25px);
+}
+
+.login-box-2{
+    position: relative;
+    width: 550px;
+    height: 450px;
+    background: transparent;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255,0.5);
+    backdrop-filter: blur(25px);
+}  .error {
+      color: #ffdddd;
+      font-size: 0.85em;
+      margin-top: 10px;
+      text-align: center;
+    }
+h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+.boxes {
+   
+    display: grid;
+    grid-template-columns: repeat(3, auto); /* 3 columns */
+    grid-auto-rows: auto; /* Let rows size automatically */
+    gap: 30px; /* space between rows and columns */
+    padding: 10px; /* padding around all boxes */
+    justify-content: center; /* center the whole grid */
+}
+
+
+.input-box{
+    
+     position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+ }
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label,
+.input-box input:not(:placeholder-shown) ~ label {
+  top: -5px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+       padding: 0px 35px 0px 5px;
+}
+
+.input-box input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;  
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #fff;
+    line-height: 57px;
+}
+
+.remember-forgot{
+    width: 100%;
+    height: 80px;
+    
+  
+    font-size: .9em ;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+ 
+
+ 
+
+button {
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 40px;
+    font-size: 1em;
+    color: #000;
+    font-weight: 500;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.5s ease;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(/bg.jpg) no-repeat;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    border-radius: 40px;
+}
+
+button:active {
+    transform: scale(0.95);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+button:hover {
+    color: white;
+}
+
+button:hover::before {
+    opacity: 1;
+}
+
+.register-link{
+    font-size: .9em;
+    color: #fff;
+    margin: 25px 0 10px;
+    text-align: center;
+}
+
+.register-link p a{
+    color: #fff;
+    font-weight: 800px;
+    text-decoration: none;
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
+}
+
+@media(max-width:560px ){
+    .login-box{
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: none;
+    }
+
+    .input-box{
+        background-color: transparent;
+    }
+}
+
+
+@media (max-width: 1366px) and (min-width: 1024px) {
+  .login-box {
+    width: 1000px;
+    height: 550px;
+  }
+  .login-box-2 {
+    width: 500px;
+    height: auto;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .input-box {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .input-box input {
+    height: 45px;
+    font-size: 0.95em;
+    padding: 0 30px 0 5px;
+  }
+
+  .input-box .icon {
+    font-size: 1em;
+    right: 10px;
+  }
+
+  .remember-forgot {
+    font-size: 0.85em;
+    margin-top: 10px;
+  }
+
+  button {
+    height: 38px;
+    font-size: 0.95em;
+  }
+
+  .dp-upload-box img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+.dp-upload-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dp-upload-box label {
+  cursor: pointer;
+}
+
+.dp-upload-box img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+    filter: none !important;
+  object-fit: cover;
+  border: 3px solid #00ffff;
+  transition: 0.3s ease;
+}
+
+.dp-upload-box img:hover {
+  opacity: 0.8;
+}

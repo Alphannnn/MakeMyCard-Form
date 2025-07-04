@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title>Data-Saver-Form</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <section>
+
+   
+    <div class="login-box">
+        <form id="form">
+            <h2>Welcome</h2>
+    <div class="boxes"> 
+
+
+             <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input id="name" type="text" placeholder=" "  pattern="^([A-Z][a-z]*)(\s[A-Z][a-z]*)*$" 
+         title="Each word must start with a capital letter and contain only letters A–Z" required>
+                <label for="name">Name</label>
+            </div>
+
+               <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input id="email" type="email"   placeholder=" "  pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" 
+         title="Email must end with @gmail.com" required>
+                <label for="email">Email</label>
+            </div>
+          
+          <div class="input-box">
+  <span class="icon toggle-password" onclick="togglePassword()">
+    <ion-icon name="lock-closed" id="lockIcon"></ion-icon>
+  </span>
+  <input id="password" type="password"  placeholder=" "   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+         title="Password must be at least 8 characters, include uppercase, lowercase, number, and special character"  required>
+  <label for="password">Password</label>
+</div>
+
+
+          <div class="input-box">
+  <span class="icon"><ion-icon name="calendar"></ion-icon></span>
+  <input id="dB" type="text"  placeholder=" "  onfocus="(this.type='date')" onblur="if(this.value===''){this.type='text'}" required>
+  <label for="dB">Date of Birth</label>
+</div>
+
+
+             <div class="input-box">
+                <span class="icon"><ion-icon name="call"></ion-icon></ion-icon></span>
+                <input id="phone" type="tel"  placeholder=" "  pattern="^\d{11}$" 
+         title="Phone number must be 11 digits (numbers only, e.g. 03XXXXXXXXX)"  required>
+                <label for="phone">Phone Number</label>
+            </div>
+
+             <div class="input-box">
+                <span class="icon"><ion-icon name="book"></ion-icon></span>
+                <input id="about" type="textarea"  placeholder=" "  required>
+                <label for="about">Few Words About Yourself</label>
+            </div>
+ 
+
+
+            </div>
+            <div class="remember-forgot">
+               <div class="dp-upload-box">
+  <input type="file" id="profilePhoto" accept="image/*"  hidden>
+  <label for="profilePhoto">
+    <img id="previewImage" src="./b05e65e027bbc1c590ce4e283666b946.jpg" alt="Profile Picture" />
+  </label>
+</div>
+
+            </div>
+
+            <button type="submit">Submit</button>
+
+    <div class="register-link">
+        <p>Already have a card?<a href="./login.html">Login</a></p>
+    </div>
+
+        </form>
+    </div>
+
+       </section>
+
+ 
+<script>
+  document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const dateBirth = document.getElementById('dB').value;
+    const phoneNumber = document.getElementById('phone').value;
+    const about = document.getElementById('about').value;
+    const image = document.getElementById('previewImage').src;
+
+    const data = {
+      name,
+      email,
+      password,
+      dateBirth,
+      phoneNumber,
+      about,
+      image
+    };
+
+    sessionStorage.setItem('cardData', JSON.stringify(data));
+
+    // ✅ FIXED PATH:
+    window.location.href = './card.html';
+  });
+</script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+@media (max-width: 768px) {
+
+     
+  html, body {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  section {
+    width: 100vw;
+    min-height: 160vh; /* 💡 extra height for scroll */
+    background: url(./b05e65e027bbc1c590ce4e283666b946.jpg) no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px; 
+    box-sizing: border-box;
+  }
+
+  .login-box {
+    height: 950px;
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 200px 30px; /* ✅ spacious padding inside */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
+
+  }
+
+  h2 {
+    font-size: 1.8em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 30px;
+  }
+
+  .boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* ⬅️ more space between inputs */
+    padding: 0;
+  }
+
+  .input-box {
+    width: 100%;
+    margin: 0;
+  }
+
+  .input-box input {
+    height: 50px;
+    font-size: 1em;
+    padding-left: 8px;
+  }
+
+  .input-box .icon {
+    font-size: 1em;
+    line-height: 50px;
+    right: 8px;
+  }
+
+  .dp-upload-box {
+     margin: 30px 40px 20px;
+    justify-content: center;
+  }
+
+  .dp-upload-box img {
+    margin-top: 80px;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #00ffff;
+  }
+
+  button {
+    height: 48px;
+    margin-top: 80px;
+    font-size: 1em;
+    width: 100%;
+  }
+
+  .register-link {
+    font-size: 0.95em;
+    color: #fff;
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  .register-link p a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .error {
+    font-size: 0.9em;
+    text-align: center;
+    color: #ffdddd;
+    margin-top: 10px;
+  }
+}

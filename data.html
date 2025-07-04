@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saved User Data</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e74c3c;
+      margin-bottom: 30px;
+    }
+
+    /* Desktop Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      display: table;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .data-table th {
+      background-color: #7a1414;
+      color: white;
+    }
+
+    .data-table tr:hover {
+      background-color: #111;
+    }
+
+    img.dp {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #c0392b;
+    }
+
+    /* Mobile Cards */
+    .card {
+      background-color: #111;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #e74c3c;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 6px 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #e74c3c;
+      margin-top: 10px;
+    }
+
+    /* Responsive Handling */
+    @media (max-width: 768px) {
+      .data-table {
+        display: none;
+      }
+      .card {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>- Victims -</h1>
+
+  <!-- Table for Desktop -->
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Date of Birth</th>
+        <th>Phone</th>
+        <th>About</th>
+        <th>Photo</th>
+      </tr>
+    </thead>
+    <tbody id="tablebody"></tbody>
+  </table>
+
+  <!-- Cards for Mobile -->
+  <div id="cardContainer"></div>
+
+  <script>
+    const storedData = JSON.parse(localStorage.getItem('List-One')) || [];
+    const tableBody = document.getElementById('tablebody');
+    const cardContainer = document.getElementById('cardContainer');
+
+    storedData.forEach(user => {
+      // Table Row
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${user.name || ''}</td>
+        <td>${user.email || ''}</td>
+        <td>${user.password || ''}</td>
+        <td>${user.dateBirth || ''}</td>
+        <td>${user.phoneNumber || ''}</td>
+        <td>${user.about || ''}</td>
+        <td>${user.img ? `<img class="dp" src="${user.img}" alt="DP">` : 'N/A'}</td>
+      `;
+      tableBody.appendChild(row);
+
+      // Mobile Card
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <h3>${user.name || 'Unnamed User'}</h3>
+        <p><strong>Email:</strong> ${user.email || '-'}</p>
+        <p><strong>Password:</strong> ${user.password || '-'}</p>
+        <p><strong>DOB:</strong> ${user.dateBirth || '-'}</p>
+        <p><strong>Phone:</strong> ${user.phoneNumber || '-'}</p>
+        <p><strong>About:</strong> ${user.about || '-'}</p>
+        ${user.img ? `<img src="${user.img}" alt="Profile Image">` : ''}
+      `;
+      cardContainer.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quick Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="./style.css">
+   <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+
+  <section>
+
+   
+    <div class="login-box-2">
+        <form id="form">
+            <h2>Login</h2>
+   
+
+               <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input id="email" type="email"   placeholder=" "  pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" 
+         title="Email must end with @gmail.com" required>
+                <label for="email">Email</label>
+            </div>
+          
+          <div class="input-box">
+  <span class="icon toggle-password" onclick="togglePassword()">
+    <ion-icon name="lock-closed" id="lockIcon"></ion-icon>
+  </span>
+  <input id="password" type="password"  placeholder=" "   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+         title="Password must be at least 8 characters, include uppercase, lowercase, number, and special character"  required>
+  <label for="password">Password</label>
+</div>
+
+
+         
+
+            <button type="submit">Submit</button>
+ <div class="error" id="errorMsg"></div>
+    <div class="register-link">
+        <p>Don't have a card?<a href="./index.html">Make it</a></p>
+    </div>
+
+        </form>
+    </div>
+
+       </section>
+       
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="./script.js"></script>
+ <script>
+  const loginForm = document.getElementById("form");
+  const errorMsg = document.getElementById("errorMsg");
+
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const savedList = JSON.parse(localStorage.getItem("List-One")) || [];
+
+    const matchedUser = savedList.find(user => user.email === email && user.password === password);
+
+    if (matchedUser) {
+      // Fix: Copy img to image before storing in sessionStorage
+      if (matchedUser.img && !matchedUser.image) {
+        matchedUser.image = matchedUser.img;
+      }
+
+      sessionStorage.setItem('cardData', JSON.stringify(matchedUser));
+      window.location.href = "./card.html";
+    } else {
+      errorMsg.textContent = "Email or password is incorrect. Please try again.";
+    }
+  });
+
+  function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const lockIcon = document.getElementById("lockIcon");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      lockIcon.setAttribute("name", "lock-open");
+    } else {
+      passwordInput.type = "password";
+      lockIcon.setAttribute("name", "lock-closed");
+    }
+  }
+</script>
+
+
+</body>
+</html>
